@@ -1,18 +1,11 @@
-import Welcome from "./Welcome";
-import { Garage } from "./Garage";
+import React from "react";
 
-function App(){
-  return(
-    <div className="App">
-      <h1>Hello world</h1>
-
-      <Welcome name="sinan" age={29}/>
-      <Welcome name="umaar" age={18}/>
-
-      <Garage />
-    </div>
-    
-  )
+class Car extends React.Component{
+  render(){
+    return(
+      <h1>Render method tryed</h1>
+    )
+  }
 }
 
-export default App;
+export default Car;
