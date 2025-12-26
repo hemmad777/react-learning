@@ -1,4 +1,5 @@
 import Welcome from "./Welcome";
+import { Garage } from "./Garage";
 
 function App(){
   return(
@@ -7,6 +8,8 @@ function App(){
 
       <Welcome name="sinan" age={29}/>
       <Welcome name="umaar" age={18}/>
+
+      <Garage />
     </div>
     
   )
