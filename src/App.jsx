@@ -11,4 +11,15 @@ class Car extends React.Component{
   }
 }
 
-export default Car;
+class Garage extends React.Component{
+  render(){
+    return(
+    <>
+    <h1>My collections are</h1>
+    <Car model="mbw" />
+    <Car model="audi" />
+    </>
+    )
+  }
+}
+export default Garage;
