@@ -7,5 +7,5 @@ import Car from "./App";
 // )
 
 createRoot(document.getElementById('sandy')).render(
-  <Car />
+  <Car color ='green' />
 )
