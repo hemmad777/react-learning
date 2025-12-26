@@ -1,7 +1,7 @@
-function Car(){
+function Car(props){
     return(
         <>
-            <h2>Thiss is a mustang car</h2>
+            <h2>Thiss is a {props.brand} car</h2>
         </>
     )
 }
@@ -10,8 +10,8 @@ function Garage(){
     return(
         <>
         <h2>My garages are </h2>
-        <Car />
-        <Car />
+        <Car brand="audi" />
+        <Car brand="bens" />
         </>
     )
 }
