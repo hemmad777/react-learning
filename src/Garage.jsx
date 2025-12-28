@@ -6,14 +6,6 @@ function Car(props){
     )
 }
 
-function Garage(){
-    return(
-        <>
-        <h2>My garages are </h2>
-        <Car brand="audi" />
-        <Car brand="bens" />
-        </>
-    )
-}
+
 
 export {Car,Garage}
