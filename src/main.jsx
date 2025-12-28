@@ -1,11 +1,18 @@
 
 import { createRoot } from "react-dom/client";
-import Car from "./App";
 
-// createRoot(document.getElementById('sandy')).render(
-//   <App />
-// )
+function MyForm(){
+  return(
+    <>
+    <form action="">
+      <label htmlFor="name">Enter your name</label>
+      <input type="text" />
+    </form>
+    </>
+  )
+}
+
 
 createRoot(document.getElementById('sandy')).render(
-  <Car />
+  <MyForm />
 )
