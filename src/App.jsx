@@ -1,18 +1,13 @@
 function Car(){
-  const cars = [
-    {id: 1001, brand: 'Ford'},
-    {id: 1002, brand: 'BMW'},
-    {id: 1003, brand: 'Audi'}
-  ];
+  const cars = ['Ford', 'BMW', 'Audi'];
   return (
     <>
       <h1>My Cars:</h1>
       <ul>
-        {cars.map((car) => <li key={car.id}>I am a { car.brand }</li>)}
+        {cars.map((car, index) => <li key={index}>I am a { car }</li>)}
       </ul>
     </>
   );
-
 }
 
 
