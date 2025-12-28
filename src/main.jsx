@@ -5,21 +5,36 @@ import { useState } from "react";
 
 function MyForm(){
 
-  const [myCar,setCar]=useState("");
+  const [input,setInput]=useState({firstName:"umaar",lastName:"hemmad"});
 
   const handleChange=(e)=> {
-    setCar(e.target.value);  
+    const name=e.target.name;
+    const value=e.target.value;
+    setInput(values=>  ({...values,[name]: value}));
   }
 
   return(
     <>
     <form >
-      <select value={myCar} onChange={handleChange}>
-        <option value="Ford">Ford</option>
-        <option value="BMW">BMW</option>
-        <option value="Benxe">Bense</option>
-      </select>
-      <p>{myCar}</p>
+      <label htmlFor="">first Name:
+
+        <input 
+        type="text" 
+        name="firstName"
+        value={input.firstName}
+        onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label htmlFor="">Last name:
+        <input
+         type="text"
+         name="lastName"
+         value={input.lastName}
+         onChange={handleChange}
+        />
+      </label>
+      <p>{input.firstName} {input.lastName}</p>
     </form>
     </>
   )
