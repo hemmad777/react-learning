@@ -11,9 +11,14 @@ function MyForm(){
     setName(e.target.value);  
   }
 
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    alert(name)
+  }
+
   return(
     <>
-    <form action="">
+    <form onSubmit={handleSubmit}>
       <label htmlFor="name">Enter your name
         <input type="text" 
         value={name}
@@ -21,7 +26,7 @@ function MyForm(){
         />
 
       </label>
-      <p>Current value {name}</p>
+      <input type="submit" />
       
   
     </form>
