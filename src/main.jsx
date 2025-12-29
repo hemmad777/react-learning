@@ -5,36 +5,62 @@ import { useState } from "react";
 
 function MyForm(){
 
-  const [input,setInput]=useState({firstName:"umaar",lastName:"hemmad"});
+  const [input,setInput]=useState({});
 
   const handleChange=(e)=> {
-    const name=e.target.name;
-    const value=e.target.value;
+    const value=e.target.type==='checkbox'?e.target.checked:e.target.value
     setInput(values=>  ({...values,[name]: value}));
+    const name=e.target.name;
+  }
+
+  const handleSubmit= (e)=>{
+    e.preventDefault()
+
+    let wanted=''
+    if(input.tomato) wanted+=' tomato';
+    if (input.onion) {
+      if (input.tomato) {
+        wanted+='and'
+      }
+      wanted+='onion'
+    }
+    if (wanted=='') {
+      wanted+='no fillings'
+    }
+    alert(`${input.Name} wanted a burgger with ${wanted}`)
   }
 
   return(
     <>
-    <form >
+    <form onSubmit={handleSubmit}>
       <label htmlFor="">first Name:
 
         <input 
         type="text" 
-        name="firstName"
-        value={input.firstName}
+        name="Name"
+        value={input.Name}
         onChange={handleChange}
         />
       </label>
-      <br />
-      <label htmlFor="">Last name:
+      
+      <p>I want a burger with</p>
+      <label htmlFor="">tomato:
         <input
-         type="text"
-         name="lastName"
-         value={input.lastName}
+         type="checkbox"
+         name="tomato"
+         checked= {input.tomato}
          onChange={handleChange}
         />
       </label>
-      <p>{input.firstName} {input.lastName}</p>
+      <label htmlFor="">onion:
+        <input
+         type="checkbox"
+         name="onion"
+         checked={input.onion}
+         onChange={handleChange}
+        />
+      </label>
+      <button type="submit">submit</button>
     </form>
     </>
   )
