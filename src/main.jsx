@@ -8,7 +8,7 @@ function MyForm(){
   const [input,setInput]=useState({});
 
   const handleChange=(e)=> {
-    const value=e.target.type==='checkbox'?e.target.checked:e.target.value
+    const value=e.target.value;
     const name=e.target.name;
     setInput(values=>  ({...values,[name]: value}));
     
@@ -17,12 +17,7 @@ function MyForm(){
   const handleSubmit= (e)=>{
     e.preventDefault()
 
-    let wanted=''
-    if(input.apple) wanted ='apple';
-    if(input.orange) wanted ='orange';
-    if(input.mango) wanted ='mango';
-    
-    alert(`${input.Name} wanted a ${wanted}`)
+    alert(`${input.Name} wanted a ${input.fruit}`)
   }
 
   return(
@@ -43,24 +38,24 @@ function MyForm(){
       <label htmlFor="">apple:
         <input 
           type="radio"
-          name="apple" 
-          value={input.apple}
+          name="fruit" 
+          value='apple'
           onChange={handleChange}
         />
       </label>
       <label htmlFor="">orange:
         <input 
           type="radio"
-          name="orange" 
-          value={input.orange}
+          name="fruit" 
+          value='orange'
           onChange={handleChange}
         />
       </label>
       <label htmlFor="">mango:
         <input 
           type="radio"
-          name="mango" 
-          value={input.mango}
+          name="fruit" 
+          value='mango'
           onChange={handleChange}
         />
       </label>
