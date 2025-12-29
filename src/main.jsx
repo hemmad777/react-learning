@@ -9,25 +9,20 @@ function MyForm(){
 
   const handleChange=(e)=> {
     const value=e.target.type==='checkbox'?e.target.checked:e.target.value
-    setInput(values=>  ({...values,[name]: value}));
     const name=e.target.name;
+    setInput(values=>  ({...values,[name]: value}));
+    
   }
 
   const handleSubmit= (e)=>{
     e.preventDefault()
 
     let wanted=''
-    if(input.tomato) wanted+=' tomato';
-    if (input.onion) {
-      if (input.tomato) {
-        wanted+='and'
-      }
-      wanted+='onion'
-    }
-    if (wanted=='') {
-      wanted+='no fillings'
-    }
-    alert(`${input.Name} wanted a burgger with ${wanted}`)
+    if(input.apple) wanted ='apple';
+    if(input.orange) wanted ='orange';
+    if(input.mango) wanted ='mango';
+    
+    alert(`${input.Name} wanted a ${wanted}`)
   }
 
   return(
@@ -43,23 +38,33 @@ function MyForm(){
         />
       </label>
       
-      <p>I want a burger with</p>
-      <label htmlFor="">tomato:
-        <input
-         type="checkbox"
-         name="tomato"
-         checked= {input.tomato}
-         onChange={handleChange}
+      <p>I wanted a </p>
+
+      <label htmlFor="">apple:
+        <input 
+          type="radio"
+          name="apple" 
+          value={input.apple}
+          onChange={handleChange}
         />
       </label>
-      <label htmlFor="">onion:
-        <input
-         type="checkbox"
-         name="onion"
-         checked={input.onion}
-         onChange={handleChange}
+      <label htmlFor="">orange:
+        <input 
+          type="radio"
+          name="orange" 
+          value={input.orange}
+          onChange={handleChange}
         />
       </label>
+      <label htmlFor="">mango:
+        <input 
+          type="radio"
+          name="mango" 
+          value={input.mango}
+          onChange={handleChange}
+        />
+      </label>
+      
       <button type="submit">submit</button>
     </form>
     </>
