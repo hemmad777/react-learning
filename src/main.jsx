@@ -1,72 +1,54 @@
+import {createRoot} from 'react-dom/client';
+import { useState } from 'react';
+import {createPortal} from 'react-dom'
+import { Model } from 'mongoose';
 
-import { createRoot } from "react-dom/client";
-import { useState } from "react";
-
-
-function MyForm(){
-
-  const [input,setInput]=useState({});
-
-  const handleChange=(e)=> {
-    const value=e.target.value;
-    const name=e.target.name;
-    setInput(values=>  ({...values,[name]: value}));
-    
+function Modal({isOpen,onClose,children}){
+  if (!isOpen) {
+    return null
+  }else{
+    return createPortal(
+      <div style={{
+        position:'fixed',
+        top:'0',
+        left:'0',
+        height:'100vh',
+        width:'100%',
+        backgroundColor:'rgba(0, 0, 0, 0.5)',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      }}>
+        <div style={{
+          background:'white',
+          padding:'20px',
+          border:'1px black solid'
+        }}>
+          {children}
+          <button onClick={onClose}>Close</button>
+        </div>
+      </div>,
+      document.body
+    );
   }
+}
 
-  const handleSubmit= (e)=>{
-    e.preventDefault()
-
-    alert(`${input.Name} wanted a ${input.fruit}`)
-  }
+function MyApp(){
+  const [isOpen,setIsOpen]=useState(false)
 
   return(
-    <>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="">first Name:
+    <div>
+      <h1>MyApp</h1>
+      <button onClick={()=>{setIsOpen(true)}}>openModel</button>
 
-        <input 
-        type="text" 
-        name="Name"
-        value={input.Name}
-        onChange={handleChange}
-        />
-      </label>
-      
-      <p>I wanted a </p>
-
-      <label htmlFor="">apple:
-        <input 
-          type="radio"
-          name="fruit" 
-          value='apple'
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">orange:
-        <input 
-          type="radio"
-          name="fruit" 
-          value='orange'
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">mango:
-        <input 
-          type="radio"
-          name="fruit" 
-          value='mango'
-          onChange={handleChange}
-        />
-      </label>
-      
-      <button type="submit">submit</button>
-    </form>
-    </>
+      <Modal isOpen={isOpen} onClose={()=>setIsOpen(false)}>
+        <h2>Model content</h2>
+        <p>the content is outside of the parent div in dom hirarchey</p>
+      </Modal>
+    </div>
   )
 }
 
-
 createRoot(document.getElementById('sandy')).render(
-  <MyForm />
+  <MyApp />
 )
