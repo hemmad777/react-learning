@@ -2,6 +2,7 @@ import {createRoot} from 'react-dom/client';
 import { useState } from 'react';
 import {createPortal} from 'react-dom'
 import { Model } from 'mongoose';
+import styles from './button.module.css'
 
 function Modal({isOpen,onClose,children}){
   if (!isOpen) {
@@ -39,7 +40,7 @@ function MyApp(){
   return(
     <div>
       <h1>MyApp</h1>
-      <button onClick={()=>{setIsOpen(true)}}>openModel</button>
+      <button className={styles.sceneButton} onClick={()=>{setIsOpen(true)}}>openModel</button>
 
       <Modal isOpen={isOpen} onClose={()=>setIsOpen(false)}>
         <h2>Model content</h2>

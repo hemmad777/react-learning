@@ -1,0 +1,10 @@
+.sceneButton{
+    height: 30px;
+    width: 400px;
+    color: rgb(31, 165, 165);
+    overflow: hidden;
+    background-color: black;
+}
+.sceneButton:hover{
+    background-color: aliceblue;
+}
